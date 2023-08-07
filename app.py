@@ -23,8 +23,6 @@ brwoserless_api_key = os.getenv("BROWSERLESS_API_KEY")
 serper_api_key = os.getenv("SERP_API_KEY")
 
 # 1. Tool for search
-
-
 def search(query):
     url = "https://google.serper.dev/search"
 
@@ -172,22 +170,24 @@ agent = initialize_agent(
 
 
 # 4. Use streamlit to create a web app
-# def main():
-#     st.set_page_config(page_title="AI research agent", page_icon=":bird:")
+import streamlit as st
 
-#     st.header("AI research agent :bird:")
-#     query = st.text_input("Research goal")
+def main():
+    st.set_page_config(page_title="AI research agent", page_icon=":bird:")
 
-#     if query:
-#         st.write("Doing research for ", query)
+    st.header("AI research agent :bird:")
+    query = st.text_input("Research goal")
 
-#         result = agent({"input": query})
+    if query:
+        st.write("Doing research for ", query)
 
-#         st.info(result['output'])
+        result = agent({"input": query})
+
+        st.info(result['output'])
 
 
-# if __name__ == '__main__':
-#     main()
+if __name__ == '__main__':
+    main()
 
 
 # 5. Set this as an API endpoint via FastAPI
